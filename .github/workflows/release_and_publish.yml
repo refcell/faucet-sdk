@@ -41,11 +41,12 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
+      - name: install
+        run: yarn
       - name: publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-        run: yarn
         run: yarn publish
