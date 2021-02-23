@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Create Release and Publish NPM package
+    name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,6 +28,10 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
+  publish:
+    name: Publish NPM Package
+    runs-on: ubuntu-latest
+    steps:
       - name: Action checkout
         uses: actions/checkout@v2
         uses: actions/setup-node@v2
