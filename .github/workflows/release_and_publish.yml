@@ -29,24 +29,14 @@ jobs:
           draft: false
           prerelease: false
   publish:
-    name: Publish NPM Package
     runs-on: ubuntu-latest
     steps:
-      - name: Action checkout
-        uses: actions/checkout@v2
-      - name: Setup node env
-        uses: actions/setup-node@v2
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-      - name: install
-        run: yarn
-      - name: publish
+      - run: yarn install
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          node-version: "12.x"
-          registry-url: "https://registry.npmjs.org"
-        run: yarn publish
