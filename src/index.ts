@@ -5,7 +5,6 @@ import { FaucetOptions } from './types';
 // * Import Contracts Abi
 var faucetAbi = require(__dirname + "/abi/Faucet.json");
 var faucetFactoryAbi = require(__dirname + "/abi/FaucetFactory.json");
-var fusePoolAdapter = require(__dirname + "/abi/FusePoolAdapter.json");
 
 // * lib imports
 import { deployFaucet, deployAdapter } from './lib';
