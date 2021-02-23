@@ -1,13 +1,13 @@
 {
   "name": "faucet-sdk",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
   "main": "dist/main.commonjs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "publish": "npm publish"
+    "reversion": "npm --no-git-tag-version version minor"
   },
   "repository": {
     "type": "git",
