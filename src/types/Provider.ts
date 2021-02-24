@@ -1,14 +1,18 @@
-import { FallbackProvider } from '@ethersproject/providers/lib/fallback-provider';
-import { Signer as AbstractSigner } from '@ethersproject/abstract-signer/lib/index';
-import { BigNumber } from '@ethersproject/bignumber/lib/bignumber';
-import { BlockTag, TransactionRequest, TransactionResponse } from '@ethersproject/abstract-provider';
-import { Deferrable } from '@ethersproject/properties';
+import { FallbackProvider } from "@ethersproject/providers/lib/fallback-provider";
+import { Signer as AbstractSigner } from "@ethersproject/abstract-signer/lib/index";
+import { BigNumber } from "@ethersproject/bignumber/lib/bignumber";
+import {
+  BlockTag,
+  TransactionRequest,
+  TransactionResponse,
+} from "@ethersproject/abstract-provider";
+import { Deferrable } from "@ethersproject/properties";
 
 export interface AbiType {
   internalType?: string;
   name?: string;
   type?: string;
-  components?: AbiType[],
+  components?: AbiType[];
 }
 
 export interface AbiItem {
@@ -67,8 +71,8 @@ export interface Connection {
 }
 
 export interface Network {
-  chainId: number,
-  name: string
+  chainId: number;
+  name: string;
 }
 
 export interface ProviderNetwork {
@@ -77,8 +81,8 @@ export interface ProviderNetwork {
 }
 
 type GenericGetBalance = (
-    addressOrName: string | number | Promise<string | number>,
-    blockTag?: string | number | Promise<string | number>
+  addressOrName: string | number | Promise<string | number>,
+  blockTag?: string | number | Promise<string | number>
 ) => Promise<BigNumber>;
 
 type GenericGetTransactionCount = (
@@ -93,13 +97,13 @@ type GenericSendTransaction = (
 interface Provider extends AbstractSigner, FallbackProvider {
   connection?: Connection;
   _network: Network;
-  call: AbstractSigner['call'] | FallbackProvider['call'];
+  call: AbstractSigner["call"] | FallbackProvider["call"];
   getBalance: GenericGetBalance;
   getTransactionCount: GenericGetTransactionCount;
-  resolveName: AbstractSigner['resolveName'] | FallbackProvider['resolveName'];
+  resolveName: AbstractSigner["resolveName"] | FallbackProvider["resolveName"];
   sendTransaction: GenericSendTransaction;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   send?: (method: string, parameters: string[]) => any;
 }
 
-export default Provider
+export default Provider;

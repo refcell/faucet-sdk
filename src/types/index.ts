@@ -1,4 +1,4 @@
-import { default as Provider } from './Provider';
+import { default as Provider } from "./Provider";
 
 export interface FaucetOptions {
   privateKey?: string;
@@ -7,4 +7,4 @@ export interface FaucetOptions {
 }
 
 export { default as FaucetFactoryType } from "./FaucetFactory";
-export { default as Provider } from './Provider';
+export { default as Provider } from "./Provider";

@@ -1,18 +1,24 @@
 {
   "name": "faucet-sdk",
-  "version": "0.11.0",
+  "version": "0.13.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
   "main": "dist/main.commonjs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "reversion": "npm --no-git-tag-version version minor"
+    "reversion": "npm --no-git-tag-version version minor",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/abigger87/faucet-sdk.git"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "rari",
     "faucet",
@@ -46,6 +52,8 @@
     "stream-http": "^3.1.1",
     "terser-webpack-plugin": "^5.0.0",
     "ts-node": "^9.1.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.1.3",
     "url": "^0.11.0",
     "util": "^0.12.3",
@@ -61,7 +69,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm --no-git-tag-version version minor && git add ."
+      "pre-commit": "yarn format && yarn lint && npm --no-git-tag-version version minor && git add ."
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
