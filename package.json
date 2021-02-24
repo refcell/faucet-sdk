@@ -71,5 +71,8 @@
     "hooks": {
       "pre-commit": "yarn format && yarn lint && npm --no-git-tag-version version minor && git add ."
     }
-  }
+  },
+"lint-staged": {
+    "*.ts": ["tslint", "prettier --write", "git add"]
+}
 }
