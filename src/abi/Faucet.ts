@@ -1,4 +1,4 @@
-{
+const FaucetABI = {
   "_format": "hh-sol-artifact-1",
   "contractName": "Faucet",
   "sourceName": "contracts/Faucet.sol",
@@ -1115,3 +1115,5 @@
   "linkReferences": {},
   "deployedLinkReferences": {}
 }
+
+export default FaucetABI;
