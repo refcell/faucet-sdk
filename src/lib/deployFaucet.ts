@@ -28,7 +28,7 @@ const deployFaucet: any = async (
       .deployFaucet(owner, uri, adapter)
       .send(options);
   } catch (error) {
-    throw (error);
+    throw error;
   }
 
   return receipt;

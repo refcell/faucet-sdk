@@ -1,6 +1,6 @@
 {
   "name": "faucet-sdk",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
   "main": "dist/main.commonjs.js",
   "scripts": {
@@ -72,7 +72,11 @@
       "pre-commit": "yarn format && yarn lint && npm --no-git-tag-version version minor && git add ."
     }
   },
-"lint-staged": {
-    "*.ts": ["tslint", "prettier --write", "git add"]
-}
+  "lint-staged": {
+    "*.ts": [
+      "tslint",
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
