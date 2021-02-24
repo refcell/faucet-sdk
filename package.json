@@ -9,7 +9,8 @@
     "build": "webpack --mode production",
     "reversion": "npm --no-git-tag-version version minor",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
@@ -68,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm --no-git-tag-version version minor && git add ."
+      "pre-commit": "yarn format && yarn lint && npm --no-git-tag-version version minor && git add ."
     }
   }
 }
