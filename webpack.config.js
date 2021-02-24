@@ -1,92 +1,26 @@
-const webpack = require("webpack");
-const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path');
 
-module.exports = [
-  createConfig('window')
-];
-
-function createConfig(libraryTarget, target) {
-  var config = {
-    resolve: {
-      fallback: {
-        "os": require.resolve("os-browserify/browser"),
-        "https": require.resolve("https-browserify"),
-        "http": require.resolve("stream-http"),
-        "stream": require.resolve("stream-browserify"),
-        "crypto": require.resolve("crypto-browserify")
-      }
+module.exports = {
+  entry: './src/index.ts',
+  target: "node",
+  module: {
+    rules: [
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+      },
+    ],
+  },
+  resolve: {
+        modules: ['src', 'node_modules'],
+        extensions: ['.tsx', '.ts', '.js', '.json']
     },
-    entry: ["regenerator-runtime/runtime", "./src/index.js"],
-    output: {
-      path: __dirname,
-      filename: "./dist/faucet." + (target !== undefined ? target + "." : "") + libraryTarget + ".js",
-      libraryTarget: libraryTarget,
-      libraryExport: 'default',
-    },
-    optimization: {
-      minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            output: {
-              comments: false
-            }
-          }
-        }),
-      ],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  "@babel/preset-env",
-                  {
-                    useBuiltIns: "entry",
-                    corejs: { version: 3 }
-                  }
-                ]
-              ],
-              plugins: ["@babel/plugin-proposal-class-properties"]
-            }
-          }
-        }
-      ]
-    }
-  };
-
-  if (libraryTarget === "window") config.output.library = "Faucet";
-  if (target !== undefined) config.target = target;
-
-  if (target === "node") {
-    config.plugins = [
-      new webpack.DefinePlugin({
-        btoa: function (string) {
-          return process.browser ? btoa(string) : Buffer.from(string, 'binary').toString('base64');
-        }
-      }),
-      new webpack.ProvidePlugin({
-        window: 'global/window',
-      }),
-      new webpack.ProvidePlugin({
-        electron: "electron"
-      })
-    ];
-  } else {
-    config.plugins = [
-      new webpack.ProvidePlugin({
-        process: target === "node" ? "process" : "process/browser"
-      }),
-      new webpack.ProvidePlugin({
-        Buffer: ['buffer', 'Buffer']
-      })
-    ];
-  }
-
-  return config;
-}
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
