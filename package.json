@@ -1,6 +1,6 @@
 {
   "name": "faucet-sdk",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
   "main": "dist/main.commonjs.js",
   "scripts": {
