@@ -6,4 +6,5 @@ export interface FaucetOptions {
   provider?: Provider | string;
 }
 
+export { default as FaucetFactoryType } from "./FaucetFactory";
 export { default as Provider } from './Provider';

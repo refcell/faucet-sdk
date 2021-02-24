@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "noImplicitAny": false,
+        "useDefineForClassFields": true,
+        "skipLibCheck": true,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "allowJs": true
+    }
+}

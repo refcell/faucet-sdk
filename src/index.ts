@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Web3 from "web3";
 import { FaucetOptions } from './types';
 
@@ -11,6 +10,12 @@ import { deployFaucet, deployAdapter } from './lib';
 
 // * FaucetFactory class implementation
 class FaucetFactory {
+    // * @dev Type declarations
+    public web3: Web3 = null;
+    contracts: any;
+    getCreate2Address: (creatorAddress: any, salt: any, byteCode: any) => string;
+    deployFaucet: (uri: string, adapter: string, owner: string) => Promise<any>;
+    deployAdapter: (uri: string, adapter: string, owner: string) => Promise<any>;
 
     // TODO: Deploy and write
     static FAUCET_FACTORY_CONTRACT_ADDRESS = "0x0";
@@ -20,17 +25,10 @@ class FaucetFactory {
     // @ts-ignore
     static BN = Web3.utils.BN;
 
-    // * @dev Type declarations
-    web3: Web3;
-    contracts: any;
-    getCreate2Address: (creatorAddress: any, salt: any, byteCode: any) => string;
-    deployFaucet: (uri: string, adapter: string, owner: string) => Promise<any>;
-    deployAdapter: (uri: string, adapter: string, owner: string) => Promise<any>;
-
     constructor(provider: any, options: FaucetOptions = {}) {
         this.web3 = new Web3(provider);
         this.contracts = {
-            FaucetFactory: new this.web3.eth.Contract(faucetFactoryAbi, FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS)
+            FaucetFactory: new this.web3.eth.Contract(faucetFactoryAbi.abi, FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS)
         };
 
         this.getCreate2Address = function(creatorAddress, salt, byteCode) {
@@ -49,6 +47,5 @@ class FaucetFactory {
 
     }
 }
-
 
 export default FaucetFactory;
