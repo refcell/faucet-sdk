@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "outDir": "dist/",
         "noImplicitAny": false,
         "useDefineForClassFields": true,
         "esModuleInterop": true,

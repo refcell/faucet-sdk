@@ -27,7 +27,7 @@ const deployFaucet = (uri, implementationAddress, web3, adapter, owner, contract
             .send(options);
     }
     catch (error) {
-        throw (error);
+        throw error;
     }
     return receipt;
 });
