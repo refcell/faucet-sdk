@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const web3_1 = require("web3");
+const web3_1 = __importDefault(require("web3"));
 // * Import Contracts Abi
 const abi_1 = require("./abi");
 // * lib imports
@@ -8,12 +11,11 @@ const lib_1 = require("./lib");
 // * FaucetFactory class implementation
 class FaucetFactory {
     constructor(provider, options = {}) {
-        // * @dev Type declarations
         Object.defineProperty(this, "web3", {
             enumerable: true,
             configurable: true,
             writable: true,
-            value: null
+            value: void 0
         });
         Object.defineProperty(this, "contracts", {
             enumerable: true,
@@ -65,7 +67,7 @@ Object.defineProperty(FaucetFactory, "FAUCET_FACTORY_CONTRACT_ADDRESS", {
     enumerable: true,
     configurable: true,
     writable: true,
-    value: "0x0"
+    value: "0x0000000000000000000000000000000000000000"
 });
 // * @dev static Web3 declarations
 Object.defineProperty(FaucetFactory, "Web3", {
@@ -73,12 +75,5 @@ Object.defineProperty(FaucetFactory, "Web3", {
     configurable: true,
     writable: true,
     value: web3_1.default
-});
-// @ts-ignore
-Object.defineProperty(FaucetFactory, "BN", {
-    enumerable: true,
-    configurable: true,
-    writable: true,
-    value: web3_1.default.utils.BN
 });
 exports.default = FaucetFactory;
