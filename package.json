@@ -1,12 +1,17 @@
 {
   "name": "faucet-sdk",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
   "main": "dist/main.commonjs.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "reversion": "npm --no-git-tag-version version minor",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
