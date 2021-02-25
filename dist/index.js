@@ -69,11 +69,4 @@ Object.defineProperty(FaucetFactory, "FAUCET_FACTORY_CONTRACT_ADDRESS", {
     writable: true,
     value: "0x0000000000000000000000000000000000000000"
 });
-// * @dev static Web3 declarations
-Object.defineProperty(FaucetFactory, "Web3", {
-    enumerable: true,
-    configurable: true,
-    writable: true,
-    value: web3_1.default
-});
 exports.default = FaucetFactory;
