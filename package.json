@@ -1,8 +1,8 @@
 {
   "name": "faucet-sdk",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "description": "Typescript SDK for easy implementation of Faucet.",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json --rootDir=./src",
     "dev": "webpack --mode development",
