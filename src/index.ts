@@ -19,9 +19,6 @@ class FaucetFactory {
   static FAUCET_FACTORY_CONTRACT_ADDRESS =
     "0x0000000000000000000000000000000000000000";
 
-  // * @dev static Web3 declarations
-  static Web3 = Web3;
-
   constructor(provider: any, options: FaucetOptions = {}) {
     this.web3 = new Web3(provider);
     this.contracts = {
