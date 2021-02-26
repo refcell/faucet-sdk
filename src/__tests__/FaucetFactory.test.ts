@@ -1,13 +1,15 @@
 import Web3 from "web3";
 import { default as FaucetFactory } from "../";
 
-const EmptyAddress = "0x0000000000000000000000000000000000000000";
+const FAUCET_FACTORY_CONTRACT_ADDRESS =
+  "0x745d8A62E8A4E5805fE0451F215D179f2a6a86aA";
 
 // * Test FaucetFactory Library implementation
 describe("Faucet Factory", () => {
   test("Faucet Factory Contract Address not undefined", () => {
-    // FaucetFactory factory = new FaucetFactory(new Web3());
-    expect(FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS).toBe(EmptyAddress);
+    expect(FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS).toBe(
+      FAUCET_FACTORY_CONTRACT_ADDRESS
+    );
   });
 
   test("Faucet Factory can be instantiated", () => {
