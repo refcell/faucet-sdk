@@ -415,7 +415,7 @@ const FaucetABI: any = [
         type: "bool",
       },
     ],
-    name: "create_tranche",
+    name: "createTranche",
     outputs: [
       {
         internalType: "uint256",
@@ -434,7 +434,57 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "delete_tranche",
+    name: "deleteTranche",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getAdapterAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getPoolAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_from",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_max_amount",
+        type: "uint256",
+      },
+    ],
+    name: "getPoolShare",
     outputs: [
       {
         internalType: "uint256",
@@ -459,56 +509,6 @@ const FaucetABI: any = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "get_adapter_address",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "get_pool_address",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_from",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_max_amount",
-        type: "uint256",
-      },
-    ],
-    name: "get_pool_share",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "uint256",
@@ -516,7 +516,7 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "get_tranche_enabled",
+    name: "getTrancheEnabled",
     outputs: [
       {
         internalType: "bool",
@@ -535,7 +535,7 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "get_tranche_exists",
+    name: "getTrancheExists",
     outputs: [
       {
         internalType: "bool",
@@ -559,7 +559,7 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "get_tranche_id_amounts",
+    name: "getTrancheIdAmounts",
     outputs: [
       {
         internalType: "uint256",
@@ -578,7 +578,7 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "get_tranche_uri",
+    name: "getTrancheUri",
     outputs: [
       {
         internalType: "string",
@@ -597,7 +597,7 @@ const FaucetABI: any = [
         type: "address",
       },
     ],
-    name: "get_user_tranche_level",
+    name: "getUserTrancheLevel",
     outputs: [
       {
         internalType: "uint256",
@@ -686,7 +686,7 @@ const FaucetABI: any = [
         type: "bytes",
       },
     ],
-    name: "mint_item",
+    name: "mintItem",
     outputs: [
       {
         internalType: "uint256",
@@ -857,29 +857,11 @@ const FaucetABI: any = [
     inputs: [
       {
         internalType: "address",
-        name: "operator",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "approved",
-        type: "bool",
-      },
-    ],
-    name: "setApprovalForAll",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_adapter_address",
         type: "address",
       },
     ],
-    name: "set_adapter_address",
+    name: "setAdapterAddress",
     outputs: [
       {
         internalType: "address",
@@ -903,7 +885,25 @@ const FaucetABI: any = [
         type: "bool",
       },
     ],
-    name: "set_approval",
+    name: "setApproval",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
+    ],
+    name: "setApprovalForAll",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -916,7 +916,7 @@ const FaucetABI: any = [
         type: "address",
       },
     ],
-    name: "set_pool_address",
+    name: "setPoolAddress",
     outputs: [
       {
         internalType: "address",
@@ -940,7 +940,7 @@ const FaucetABI: any = [
         type: "bool",
       },
     ],
-    name: "set_tranche_enabled",
+    name: "setTrancheEnabled",
     outputs: [
       {
         internalType: "uint256",
@@ -969,7 +969,7 @@ const FaucetABI: any = [
         type: "uint256",
       },
     ],
-    name: "set_tranche_id_amounts",
+    name: "setTrancheIdAmounts",
     outputs: [
       {
         internalType: "uint256",
@@ -993,7 +993,7 @@ const FaucetABI: any = [
         type: "string",
       },
     ],
-    name: "set_tranche_uri",
+    name: "setTrancheUri",
     outputs: [
       {
         internalType: "uint256",
@@ -1017,7 +1017,7 @@ const FaucetABI: any = [
         type: "address",
       },
     ],
-    name: "set_user_tranche_level",
+    name: "setUserTrancheLevel",
     outputs: [
       {
         internalType: "uint256",
