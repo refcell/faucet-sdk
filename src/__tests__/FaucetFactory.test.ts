@@ -2,7 +2,7 @@ import Web3 from "web3";
 import { default as FaucetFactory } from "../";
 
 const FAUCET_FACTORY_CONTRACT_ADDRESS =
-  "0x745d8A62E8A4E5805fE0451F215D179f2a6a86aA";
+  "0xe02745875f8F30d12E3cFd1B1B975ba96cFE4De1";
 
 // * Test FaucetFactory Library implementation
 describe("Faucet Factory", () => {
