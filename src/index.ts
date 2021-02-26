@@ -14,10 +14,11 @@ class FaucetFactory {
   getCreate2Address: (creatorAddress: any, salt: any, byteCode: any) => string;
   deployFaucet: (uri: string, adapter: string, owner: string) => Promise<any>;
   deployAdapter: (uri: string, adapter: string, owner: string) => Promise<any>;
+  setFaucetFactoryContractAddress: (newAddress: string) => string;
 
-  // TODO: Deploy and write
+  // TODO: Update to mainnet once deployed
   static FAUCET_FACTORY_CONTRACT_ADDRESS =
-    "0x0000000000000000000000000000000000000000";
+    "0x745d8A62E8A4E5805fE0451F215D179f2a6a86aA";
 
   constructor(provider: any, options: FaucetOptions = {}) {
     this.web3 = new Web3(provider);
@@ -43,7 +44,7 @@ class FaucetFactory {
         .slice(-40)}`.toLowerCase();
     };
 
-    // * Function implementations
+    // * Deploy Faucet
     this.deployFaucet = (uri, adapter, owner) =>
       deployFaucet(
         uri,
@@ -54,8 +55,16 @@ class FaucetFactory {
         this.contracts,
         options
       );
+
+    // * Deploy Adapter
     this.deployAdapter = (adapter) =>
       deployAdapter(adapter, this.web3, this.contracts, options);
+
+    // * Set Faucet Factory Address
+    this.setFaucetFactoryContractAddress = (newAddress) => {
+      FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS = newAddress;
+      return FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS;
+    };
   }
 }
 
