@@ -18,6 +18,7 @@ export default class FaucetFactory {
         adapter: string,
         owner: string
     ) => Promise<any>;
+    getFaucetAt: (address) => Promise<any>;
 
     // * Statics
     static FAUCET_FACTORY_CONTRACT_ADDRESS: string;
