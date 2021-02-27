@@ -13,3 +13,5 @@ Must change `FaucetFactory` address in two locations:
 
 -   `src/index.ts`
 -   `src/__tests__/FaucetFactory.test.ts`
+
+To upgrade a contract, we must update the contract ABI in `src/abi`

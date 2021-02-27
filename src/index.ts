@@ -1,8 +1,7 @@
 import Web3 from "web3";
-import { FaucetOptions } from "./types";
 
 // * Import Contracts Abi
-import { FaucetFactoryABI, FaucetABI, FusePoolAdapterABI } from "./abi";
+import { FaucetFactoryABI, FusePoolAdapterABI } from "./abi";
 
 // * lib imports
 import { deployFaucet, deployAdapter, getFaucetAt } from "./lib";
@@ -21,6 +20,7 @@ class FaucetFactory {
     newOptions: any
   ) => Promise<any>;
   setFaucetFactoryContractAddress: (newAddress: string) => string;
+  setFusePoolAdapterAddress: (newAddress: string) => string;
   getFaucetAt: (address: string) => any;
 
   // TODO: Update to mainnet once deployed
@@ -33,11 +33,13 @@ class FaucetFactory {
     this.web3 = new Web3(provider);
     this.contracts = {
       FaucetFactory: new this.web3.eth.Contract(
-        FaucetFactoryABI,
+        // @ts-ignore
+        [FaucetFactoryABI.abi],
         FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS
       ),
       FusePoolAdapter: new this.web3.eth.Contract(
-        FusePoolAdapterABI,
+        // @ts-ignore
+        [FusePoolAdapterABI.abi],
         FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS
       ),
     };
@@ -77,6 +79,12 @@ class FaucetFactory {
     this.setFaucetFactoryContractAddress = (newAddress) => {
       FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS = newAddress;
       return FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS;
+    };
+
+    // * Set Fuse Pool Adapter Address
+    this.setFusePoolAdapterAddress = (newAddress) => {
+      FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS = newAddress;
+      return FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS;
     };
 
     // * Faucet Fetcher

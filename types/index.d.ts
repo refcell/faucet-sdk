@@ -18,6 +18,8 @@ export default class FaucetFactory {
         adapter: string,
         owner: string
     ) => Promise<any>;
+    setFaucetFactoryContractAddress: (newAddress: string) => string;
+    setFusePoolAdapterAddress: (newAddress: string) => string;
     getFaucetAt: (address) => Promise<any>;
 
     // * Statics
