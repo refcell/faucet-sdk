@@ -20,6 +20,7 @@ class FaucetFactory {
     newOptions: any
   ) => Promise<any>;
   setFaucetFactoryContractAddress: (newAddress: string) => string;
+  setFusePoolAdapterAddress: (newAddress: string) => string;
   getFaucetAt: (address: string) => any;
 
   // TODO: Update to mainnet once deployed
@@ -78,6 +79,12 @@ class FaucetFactory {
     this.setFaucetFactoryContractAddress = (newAddress) => {
       FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS = newAddress;
       return FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS;
+    };
+
+    // * Set Fuse Pool Adapter Address
+    this.setFusePoolAdapterAddress = (newAddress) => {
+      FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS = newAddress;
+      return FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS;
     };
 
     // * Faucet Fetcher
