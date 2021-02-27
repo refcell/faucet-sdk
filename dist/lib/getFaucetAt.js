@@ -9,16 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// * Deploy Adapter
-const deployAdapter = (adapter, param, web3, contracts, options) => __awaiter(void 0, void 0, void 0, function* () {
-    const Adapter = contracts[adapter];
-    Adapter.options.from = options.from;
-    const receipt = yield Adapter.deploy({
-        data: "0x0",
-        arguments: [param],
-    }).send(options);
-    const adapterAddress = Adapter.options.address;
-    // * Return Adapter receipt and deployed address
-    return [receipt, adapterAddress];
+const abi_1 = require("../abi");
+// * FaucetFactory deployFaucet function logic
+const getFaucetAt = (address, web3, contracts) => __awaiter(void 0, void 0, void 0, function* () {
+    // * Get Faucet Definitions
+    // @ts-ignore
+    const Faucet = new web3.eth.Contract([abi_1.FaucetABI.abi], address);
+    return Faucet;
 });
-exports.default = deployAdapter;
+exports.default = getFaucetAt;

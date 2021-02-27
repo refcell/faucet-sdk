@@ -8,7 +8,8 @@ const getFaucetAt: any = async (
   contracts: any
 ) => {
   // * Get Faucet Definitions
-  const Faucet: any = new web3.eth.Contract(FaucetABI, address);
+  // @ts-ignore
+  const Faucet: any = new web3.eth.Contract([FaucetABI.abi], address);
 
   return Faucet;
 };
