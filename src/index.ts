@@ -1,8 +1,7 @@
 import Web3 from "web3";
-import { FaucetOptions } from "./types";
 
 // * Import Contracts Abi
-import { FaucetFactoryABI, FaucetABI, FusePoolAdapterABI } from "./abi";
+import { FaucetFactoryABI, FusePoolAdapterABI } from "./abi";
 
 // * lib imports
 import { deployFaucet, deployAdapter, getFaucetAt } from "./lib";
@@ -33,11 +32,13 @@ class FaucetFactory {
     this.web3 = new Web3(provider);
     this.contracts = {
       FaucetFactory: new this.web3.eth.Contract(
-        FaucetFactoryABI,
+        // @ts-ignore
+        [FaucetFactoryABI.abi],
         FaucetFactory.FAUCET_FACTORY_CONTRACT_ADDRESS
       ),
       FusePoolAdapter: new this.web3.eth.Contract(
-        FusePoolAdapterABI,
+        // @ts-ignore
+        [FusePoolAdapterABI.abi],
         FaucetFactory.FUSE_POOL_ADAPTER_ADDRESS
       ),
     };
